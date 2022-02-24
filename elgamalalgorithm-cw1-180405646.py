@@ -6,7 +6,7 @@ import time
 
 
 # region import JSON
-testfile = open(r'C:\Users\APM Z\Desktop\ComSec CW1\180405646.json')
+testfile = open(r'.json') # add path to json file 
 jsondata = json.load(testfile)
 testfile.close()
 text_to_decrypt = jsondata["exercise"]["message"]["text"]
@@ -193,8 +193,8 @@ def elgmalDecryption(encoded, r, key_alice, p):
 def main():
     text = text_to_decrypt
     # Alice and Bob agrees on prime p and generator g
-    p = 11802904305386828087
-    g = 5
+    p = prime_candidate
+    g = primitiveRootG(p)
 
     # receiver [Alice] private key, sk [alice decrypt]
     key_alice = random.randint(2, 4294967295)
@@ -273,7 +273,7 @@ def main():
     answer = json.dumps(data)
     print(answer)
 
-    with open('AuntPyoneMaung_180405646_CO3326cw1.json_test', 'w') as jsonoutput:
+    with open('name.json', 'w') as jsonoutput: # give name to file output
         jsonoutput.write(answer)
 
 
